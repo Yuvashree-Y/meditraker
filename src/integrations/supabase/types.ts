@@ -14,7 +14,191 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          appointment_date: string
+          created_at: string
+          doctor_name: string
+          id: string
+          notes: string | null
+          specialty: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          appointment_date?: string
+          created_at?: string
+          doctor_name?: string
+          id?: string
+          notes?: string | null
+          specialty?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          appointment_date?: string
+          created_at?: string
+          doctor_name?: string
+          id?: string
+          notes?: string | null
+          specialty?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      medicine_tracker: {
+        Row: {
+          created_at: string
+          dosage: string
+          id: string
+          medicine_name: string
+          prescription_id: string | null
+          schedule_date: string
+          schedule_time: string
+          taken: boolean
+          taken_at: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          dosage?: string
+          id?: string
+          medicine_name: string
+          prescription_id?: string | null
+          schedule_date?: string
+          schedule_time: string
+          taken?: boolean
+          taken_at?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          dosage?: string
+          id?: string
+          medicine_name?: string
+          prescription_id?: string | null
+          schedule_date?: string
+          schedule_time?: string
+          taken?: boolean
+          taken_at?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medicine_tracker_prescription_id_fkey"
+            columns: ["prescription_id"]
+            isOneToOne: false
+            referencedRelation: "prescriptions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      prescriptions: {
+        Row: {
+          created_at: string
+          doctor_name: string
+          id: string
+          image_url: string | null
+          medicines: string[] | null
+          name: string
+          notes: string | null
+          prescription_date: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          doctor_name?: string
+          id?: string
+          image_url?: string | null
+          medicines?: string[] | null
+          name?: string
+          notes?: string | null
+          prescription_date?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          doctor_name?: string
+          id?: string
+          image_url?: string | null
+          medicines?: string[] | null
+          name?: string
+          notes?: string | null
+          prescription_date?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          allergies: string[] | null
+          blood_group: string | null
+          conditions: string[] | null
+          created_at: string
+          date_of_birth: string | null
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
+          emergency_contact_relation: string | null
+          full_name: string | null
+          height: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+          weight: string | null
+        }
+        Insert: {
+          address?: string | null
+          allergies?: string[] | null
+          blood_group?: string | null
+          conditions?: string[] | null
+          created_at?: string
+          date_of_birth?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          emergency_contact_relation?: string | null
+          full_name?: string | null
+          height?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+          weight?: string | null
+        }
+        Update: {
+          address?: string | null
+          allergies?: string[] | null
+          blood_group?: string | null
+          conditions?: string[] | null
+          created_at?: string
+          date_of_birth?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          emergency_contact_relation?: string | null
+          full_name?: string | null
+          height?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+          weight?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
