@@ -1,21 +1,55 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Heart, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { Heart, Mail, Lock, Eye, EyeOff, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-medical.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { signIn, signUp, user } = useAuth();
+  const { toast } = useToast();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Redirect if already logged in
+  if (user) {
+    navigate("/dashboard", { replace: true });
+    return null;
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/dashboard");
+    setLoading(true);
+
+    if (isLogin) {
+      const { error } = await signIn(email, password);
+      if (error) {
+        toast({ title: "Sign in failed", description: error.message, variant: "destructive" });
+      } else {
+        navigate("/dashboard");
+      }
+    } else {
+      if (!fullName.trim()) {
+        toast({ title: "Name required", description: "Please enter your full name", variant: "destructive" });
+        setLoading(false);
+        return;
+      }
+      const { error } = await signUp(email, password, fullName);
+      if (error) {
+        toast({ title: "Sign up failed", description: error.message, variant: "destructive" });
+      } else {
+        toast({ title: "Check your email", description: "We sent you a confirmation link. Please verify your email to sign in." });
+      }
+    }
+    setLoading(false);
   };
 
   return (
@@ -51,7 +85,15 @@ const Login = () => {
             {!isLogin && (
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">Full Name</label>
-                <Input placeholder="John Doe" className="h-12" />
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Input
+                    placeholder="John Doe"
+                    className="h-12 pl-11"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                </div>
               </div>
             )}
             <div>
@@ -64,6 +106,7 @@ const Login = () => {
                   className="h-12 pl-11"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -77,6 +120,8 @@ const Login = () => {
                   className="h-12 pl-11 pr-11"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength={6}
                 />
                 <button
                   type="button"
@@ -88,16 +133,12 @@ const Login = () => {
               </div>
             </div>
 
-            {isLogin && (
-              <div className="flex justify-end">
-                <button type="button" className="text-sm text-primary hover:underline">
-                  Forgot password?
-                </button>
-              </div>
-            )}
-
-            <Button type="submit" className="w-full h-12 text-base font-semibold gradient-primary border-0 text-primary-foreground hover:opacity-90 transition-opacity">
-              {isLogin ? "Sign In" : "Create Account"}
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full h-12 text-base font-semibold gradient-primary border-0 text-primary-foreground hover:opacity-90 transition-opacity"
+            >
+              {loading ? "Please wait..." : isLogin ? "Sign In" : "Create Account"}
             </Button>
           </form>
 
