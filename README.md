@@ -1,73 +1,69 @@
-# Welcome to your Lovable project
+MediTracker 💊
 
-## Project info
+A Digital Patient Medication and Healthcare Management Application
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+MediTracker is a healthcare management application designed to help patients organize and keep track of important health-related activities such as medications, prescriptions, appointments, and diet plans.
 
-## How can I edit this code?
+The application provides separate interfaces for patients and doctors, with features intended to make healthcare information easier to manage and access in one place.
 
-There are several ways of editing your application.
+🎯 Objective
 
-**Use Lovable**
+The goal of MediTracker is to provide a simple digital platform that helps patients stay organized with their medications and appointments while improving the way healthcare-related information is managed.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+✨ Key Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- 👤 Patient Login — Access to patient-specific information and features.
+- 👨‍⚕️ Doctor Login — Dedicated interface for healthcare professionals.
+- 💊 Medication Tracking — Helps users keep track of prescribed medications.
+- 📄 Prescription Management — Allows prescription information to be stored and accessed.
+- 📅 Appointment Management — Helps users manage upcoming appointments.
+- 🔔 Medication Reminders — Supports timely medication tracking and reminders.
+- 🤖 AI Chatbot — Provides an interactive assistant for general health-related guidance.
+- 🥗 Diet Plans — Provides organized diet-related information for users.
+- 📱 Responsive Interface — Designed to work across different screen sizes.
 
-**Use your preferred IDE**
+🛠️ Technologies
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The technologies used in the project include:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- HTML5
+- CSS3
+- JavaScript
+- PHP
+- MySQL
 
-Follow these steps:
+🔄 Application Workflow
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Patient / Doctor
+       ↓
+     Login
+       ↓
+Access Dashboard
+       ↓
+Healthcare Features
+       ↓
+Medication / Prescription /
+Appointments / Diet / Assistance
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+👩‍💻 My Contribution
 
-# Step 3: Install the necessary dependencies.
-npm i
+I worked on the design and development of the application, including the user interface, application features, and overall user experience.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+📌 Project Status
 
-**Edit a file directly in GitHub**
+Academic Project
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The application is developed as a student project exploring how web technologies can be used to organize healthcare-related information and provide a more convenient digital experience for patients.
 
-**Use GitHub Codespaces**
+🚀 Future Enhancements
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Secure cloud-based health records
+- Real-time doctor-patient communication
+- Advanced appointment management
+- Improved notification and reminder systems
+- Health data analytics
+- Integration with wearable health devices
 
-## What technologies are used for this project?
+---
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MediTracker — Making healthcare information easier to organize and manage.
